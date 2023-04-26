@@ -112,6 +112,7 @@ const currentElementsCommand = program
 
 const changesetCountsCommand = program
   .command("changeset_counts")
+  .description("Get a sorted list of users and their changeset count")
   .action(async (database, options) => {
     const columns = ["count", "user_id", "display_name"];
     await programAction("changeset_counts", columns, database, options);
