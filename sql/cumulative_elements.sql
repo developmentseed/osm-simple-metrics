@@ -62,8 +62,13 @@ select
   sum(count) over (order by day asc rows between unbounded preceding and current row) as sum_users
   from users
 )
-select cumulative_nodes.day, sum_nodes, sum_ways, sum_relations, sum_changesets, sum_users from cumulative_nodes 
-left join cumulative_ways on cumulative_nodes.day = cumulative_ways.day
-left join cumulative_relations on cumulative_nodes.day = cumulative_relations.day
-left join cumulative_changesets on cumulative_changesets.day = cumulative_relations.day
-left join cumulative_users on cumulative_users.day = cumulative_changesets.day
+select cumulative_nodes.day, 
+sum_nodes, 
+max(sum_ways) over (order by day asc rows between unbounded preceding and current row) as sum_ways, 
+max(sum_relations) over (order by day asc rows between unbounded preceding and current row) as sum_relations, 
+max(sum_changesets) over (order by day asc rows between unbounded preceding and current row) as sum_changesets, 
+max(sum_users) over (order by day asc rows between unbounded preceding and current row) as sum_users from cumulative_nodes 
+left join cumulative_ways using (day)
+left join cumulative_relations using (day)
+left join cumulative_changesets using (day)
+left join cumulative_users using (day)
