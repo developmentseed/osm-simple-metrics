@@ -10,6 +10,7 @@ Node 18:
 
 ```
 yarn install
+yarn link
 ```
 
 or
