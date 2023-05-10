@@ -6,6 +6,9 @@
   "repository": "git@github.com:developmentseed/osm-simple-metrics.git",
   "author": "Marc Farra <marcfarra@gmail.com>",
   "license": "MIT",
+  "bin": {
+    "osm-simple-metrics": "./index.js"
+  },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.319.0",
     "commander": "^10.0.1",
