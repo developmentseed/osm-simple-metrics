@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const { TinyPg } = require("tinypg");
 const { program } = require("commander");
 const { stringify } = require("csv-stringify/sync");
